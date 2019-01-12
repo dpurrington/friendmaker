@@ -12,7 +12,7 @@
 To use the tool:
 `friendmaker <org name> <your github token> > ./.mrconfig`
 
-If you prefer, you can export your token to `Gnpx github:dpurrington/friendmaker simplisafITHUB_TOKEN` and skip passing it on the command line.
+If you prefer, you can export your token to `GITHUB_TOKEN` and skip passing it on the command line.
 
 After you have created the .mrconfig file, simply run `mr up` in that directory, and all repos in the org you specified will be fetched to that directory. For more information on using myrepos, see [the documentation](https://myrepos.branchable.com/)
 
