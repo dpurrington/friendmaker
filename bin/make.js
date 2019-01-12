@@ -1,25 +1,22 @@
-const rp = require('request-promise');
-
-const { GITHUB_TOKEN } = process.env;
-
+#! /usr/bin/env node
+const axios = require('axios');
 
 const org = process.argv[2];
+const token = process.env['GITHUB_TOKEN'] ? process.env['GITHUB_TOKEN'] : process.argv[3];
+
 const mainUrl = `https://api.github.com/search/repositories\?q=org:${org}`;
 const linkRegex = new RegExp('<(.*)>')
 let url = mainUrl;
 async function main() {
   while (true) {
-    const resp = await rp({
-      url,
+    const resp = await axios.get(url, {
       headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
+        Authorization: `token ${token}`,
         'User-Agent': 'node',
       },
-      resolveWithFullResponse: true,
     });
 
-    body = JSON.parse(resp.body);
-    body.items.forEach(i => {
+    resp.data.items.forEach(i => {
       console.log(`[${i.name}]`)
       console.log(`checkout = git clone '${i.ssh_url}' '${i.name}'`);
       console.log('');

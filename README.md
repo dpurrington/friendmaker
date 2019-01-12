@@ -3,4 +3,4 @@
 The tool uses the ssh link for all repos.
 
 To use this tool, use the following format:
-`node get-org-repo-urls <org name>`
+`friendmaker <org name> <your github token>`
